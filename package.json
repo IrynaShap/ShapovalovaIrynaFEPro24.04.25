@@ -1,0 +1,30 @@
+{
+  "name": "homework-28.1",
+  "version": "1.0.0",
+  "description": "TODO list with Formik with separated frontend and backend",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm install --workspace=frontend && npm install --workspace=backend",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "build": "npm run build --workspace=frontend",
+    "start": "npm run start --workspace=backend",
+    "start:both": "concurrently \"npm run start --workspace=backend\" \"npm run start --workspace=frontend\""
+  },
+  "keywords": [
+    "todo",
+    "express",
+    "mongodb",
+    "webpack"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
