@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { Sun, Moon, Home, Phone, User } from 'lucide-react'
 import ThemeContext from '../context/ThemeContext.jsx'
+import { NavLink } from 'react-router-dom'
 
-const Header = ({ currentPage, setCurrentPage }) => {
+const Header = () => {
   const { isDark, toggleTheme } = useContext(ThemeContext)
 
   const navItems = [
@@ -21,20 +22,20 @@ const Header = ({ currentPage, setCurrentPage }) => {
           
           <nav className="flex space-x-4">
             {navItems.map(({ id, label, icon: Icon }) => (
-              <button
+              <NavLink
                 key={id}
-                onClick={() => setCurrentPage(id)}
-                className={`flex items-center space-x-2 px-3 py-2 rounded ${
-                  currentPage === id
+                to={id === 'home' ? '/' : `/${id}`}
+                className={({ isActive }) => `flex items-center space-x-2 px-3 py-2 rounded transition-colors ${
+                  isActive
                     ? 'bg-blue-500 text-white'
-                    : isDark 
-                      ? 'text-gray-300 hover:bg-gray-700' 
+                    : isDark
+                      ? 'text-gray-300 hover:bg-gray-700'
                       : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
                 <Icon size={18} />
                 <span>{label}</span>
-              </button>
+              </NavLink>
             ))}
           </nav>
 
