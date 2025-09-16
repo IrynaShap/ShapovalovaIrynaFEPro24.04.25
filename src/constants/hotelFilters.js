@@ -1,0 +1,1 @@
+export const quickRatings = [0, 2, 3, 4];
